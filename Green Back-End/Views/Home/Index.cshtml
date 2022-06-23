@@ -1,0 +1,225 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="navbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="logo col-lg-4 col-sm-4 col-md-4 col-4">
+                    <h1>@layoutservice.GetDatas().Result.FirstOrDefault(h => h.Key == "HeaderLogo").Value</h1>
+                </div>
+
+                <div class="navlink col-lg-8">
+                    <ul class="d-flex">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Portfolio</a></li>
+                        <li><a href="">Team</a></li>
+                        <li><a href="">Drop Down</a></li>
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-danger" asp-controller="Account" asp-action="Edit">@User.Identity.Name</a>
+                        <a class="btn btn-danger" asp-controller="Account" asp-action="Logout">Logout</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger" asp-controller="Account" asp-action="Register">Register</a>
+                        <a class="btn btn-danger" asp-controller="Account" asp-action="Login">Login</a>
+                    }
+                </div>
+                <div class="bar col-md-8 col-sm-8 col-8">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="slider" class="mt-2">
+        <div class="sliderItem">
+            @{
+                var count = 0;
+
+                @foreach (Slider slider in Model.sliders)
+                {
+
+
+                    var slideImage = count++ == 1 ? "items d-flex align-items-center active" : "items d-flex align-items-center";
+                    <div class="@slideImage" style="background-image: url(assets/Image/@slider.Image);">
+                        <div class="manage text-light">
+                            <i class="fa-solid fa-chevron-left right"></i>
+                            <i class="fa-solid fa-chevron-right left"></i>
+                        </div>
+                        <div class="description text-center text-light">
+                            <h2>@slider.Title</h2>
+                            <p class="w-50">@slider.Description</p>
+                            <button class="btn btn-danger">Read More</button>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </section>
+    <section id="server" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="box col-lg-4">
+                    <i class="fa-solid fa-laptop"></i>
+                    <h4>Lorem Ipsum</h4>
+                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                </div>
+                <div class="box col-lg-4">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h4>
+                        Dolor Sitema
+                    </h4>
+                    <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                </div>
+                <div class="box col-lg-4">
+                    <i class="fa-solid fa-calendar"></i>
+                    <h4>
+                        Sed ut perspiciatis
+                    </h4>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trade stravi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="mt-5">
+        <div class="container">
+            <div class="row text-center">
+                <h2>@layoutservice.GetDatas().Result.FirstOrDefault(h => h.Key == "AboutLogo").Value</h2>
+                <p class="mt-5">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <div class="aboutDesc col-lg-6">
+                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                    <p style="font-style: italic;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                    <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</p>
+                    <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                </div>
+                <div class="image col-lg-6">
+                    <img src="/assets/About/about.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="card-section" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="cards col-lg-4 col-md-12 col-sm-12 col-12">
+                    <h3>01</h3>
+                    <p>Lorem Ipsum</p>
+                    <span>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</span>
+                </div>
+                <div class="cards col-lg-4 col-md-12 col-sm-12 col-12">
+                    <h3>02</h3>
+                    <p>Repellat Nihil</p>
+                    <span>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</span>
+                </div>
+                <div class="cards col-lg-4 col-md-12 col-sm-12 col-12">
+                    <h3>03</h3>
+                    <p>Ad ad velit qui</p>
+                    <span>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</span>
+                </div>
+                <div class="cards col-lg-4 col-md-12 col-sm-12 col-12">
+                    <h3>04</h3>
+                    <p>Repellendus molestiae</p>
+                    <span>Inventore quo sint a sint rerum. Distinctio blanditiis deserunt quod soluta quod nam mider lando casa</span>
+                </div>
+                <div class="cards col-lg-4 col-md-12 col-sm-12 col-12">
+                    <h3>05</h3>
+                    <p>Sapiente Magnam</p>
+                    <span>Vitae dolorem in deleniti ipsum omnis tempore voluptatem. Qui possimus est repellendus est quibusdam</span>
+                </div>
+                <div class="cards col-lg-4 col-md-12 col-sm-12 col-12">
+                    <h3>06</h3>
+                    <p>Facilis Impedit</p>
+                    <span>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi aut nostrum repudiandae voluptatibus corporis sequi</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="service-section" class="mt-5">
+        <div class="container">
+            <div class="row text-center">
+                <h2>@layoutservice.GetDatas().Result.FirstOrDefault(h => h.Key == "ServiceLogo").Value</h2>
+                <p class="mt-4">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                @foreach (Green_Back_End.Models.Service service in Model.Services)
+                {
+                    <div class="services col-lg-4">
+                        <div class="cards">
+                            <svg width="100" class="svg" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                <path class="path" stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
+
+                            </svg>
+                            <i class="@service.Icon"></i>
+                            <h4>@service.Title</h4>
+                            <p>@service.Description</p>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-center">@layoutservice.GetDatas().Result.FirstOrDefault(h => h.Key == "ContactLogo").Value</h2>
+                <p class="mt-4">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <div class="address col-lg-5">
+                    <div class="box d-flex">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h4>Location:</h4>
+                            <p>A108 Adam Street, New York, NY 535022</p>
+                        </div>
+                    </div>
+                    <div class="box d-flex">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h4>Email:</h4>
+                            <p>info@example.com</p>
+                        </div>
+                    </div>
+                    <div class="box d-flex">
+                        <div class="icon">
+                            <i class="fa-solid fa-mobile-button"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h4>Call:</h4>
+                            <p>+1 5589 55488 55s</p>
+                        </div>
+                    </div>
+                    <div style="width: 100%;" class="mb-5">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319" width="100%" height="200" frameborder="0" style="border:0"></iframe>
+                    </div>
+                </div>
+                <div class="message col-lg-6">
+                    <form action="" class="form">
+
+                        <input type="text" placeholder="Your Email" class="email">
+
+                        <input type="number" placeholder="Your phone" class="phone">
+
+                        <input type="text" placeholder="Subject" class="subject"> <br>
+
+                        <textarea name="" id="" cols="85" rows="10" placeholder="Message" class="mt-4 w-100"></textarea>
+                    </form>
+                    <button class="btn btn-success">Send Message</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+

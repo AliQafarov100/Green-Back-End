@@ -1,0 +1,29 @@
+﻿@model Service
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div>
+    <div>
+        <p>Id</p>
+        <h4>@Model.Id</h4>
+    </div>
+    <div>
+        <p>Title</p>
+        <h4>@Model.Title</h4>
+    </div>
+    <div>
+        <p>Description</p>
+        <h4>@Model.Description</h4>
+    </div>
+    <div>
+        <p>Icon</p>
+        <h4>@Model.Icon</h4>
+    </div>
+</div>
+<form method="post">
+    <button type="submit" class="btn btn-danger">
+        Delete
+    </button>
+</form>
+
